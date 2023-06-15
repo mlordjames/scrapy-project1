@@ -1,0 +1,20 @@
+virtualenv project1
+source project1\scripts\activate
+
+scrapy startproject worldometer
+
+cd worldometer - to get to the folder created
+scrapy genspider countries www.worldometers.info/world-population/population-by-country
+
+your project name must be unique
+
+no http in domain name
+
+pip install ipython
+in the shell
+fetch ("https://www.worldometers.info/world-population/population-by-country/")
+
+r = scrapy.Request(url="https://www.worldometers.info/world-population/population-by-country/")
+fetch(r)
+response.body
+view(response)
