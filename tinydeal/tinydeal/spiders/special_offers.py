@@ -9,9 +9,9 @@ class SpecialOffersSpider(scrapy.Spider):
     def parse(self, response):
         for product in response.xpath("//ul[@class='productlisting-ul']//li"):
             yield{
-                "title":response.xpath(".//a[@class='p_box_title']/text()").get(),
-                "url":response.urljoin(response.xpath(".//a[@class='p_box_title']/@href").get()),
-                "discounted_price":response.xpath(".//span[@class='productSpecialPrice fl']/text()").get(),
-                "original_price":response.xpath(".//span[@class='normalprice fl']/text()").get(),
-                "image":response.urljoin(response.xpath(".//a[@class='p_box_img']/img/@src").get())
+                "title":product.xpath(".//a[@class='p_box_title']/text()").get(),
+                "url":response.urljoin(product.xpath(".//a[@class='p_box_title']/@href").get()),
+                "discounted_price":product.xpath(".//span[@class='productSpecialPrice fl']/text()").get(),
+                "original_price":product.xpath(".//span[@class='normalprice fl']/text()").get(),
+                "image":response.urljoin(product.xpath(".//a[@class='p_box_img']/img/@src").get())
             }
