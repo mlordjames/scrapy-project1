@@ -17,4 +17,7 @@ fetch ("https://www.worldometers.info/world-population/population-by-country/")
 r = scrapy.Request(url="https://www.worldometers.info/world-population/population-by-country/")
 fetch(r)
 response.body
-view(response)
+title = response.xpath("//h1/text()")
+title.get()
+
+
