@@ -20,4 +20,20 @@ response.body
 title = response.xpath("//h1/text()")
 title.get()
 
+countries = response.xpath("//table[@id='example2']//td[2]/a/text()").getall()
 
+
+edit the countries.py file
+scrapy crawl countries
+
+to fixed character encoding
+go to settings file in the project
+ same with USER_AGENT
+
+ ## debugging scrapy spiders
+ https://docs.scrapy.org/en/latest/topics/debug.html
+
+ scrapy parse --spider=countries -c parse_country https://www.worldometers.info/world-population/china-population/
+
+ scrapy parse --spider=countries -c parse_country --meta='{\"country_name\":\"China\"}' https://www.worldometers.info/world-population/china-population/
+ scrapy parse --spider=countries -c parse_country --meta='{"country_name":"China"}' https://www.worldometers.info/world-population/china-population/
